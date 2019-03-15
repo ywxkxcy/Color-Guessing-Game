@@ -5,25 +5,26 @@
 	<link rel="stylesheet" type="text/css" href="colorGame.css">
 </head>
 <body>
-<!-- 写的时候这里多写了一个空格。。。很多奇怪的错误都是来自于拼写错误 -->
 <h1>
-	The Great 
-	<br> <!-- add line break -->
+	The Great	
+	<br> 
 	<span id="colorDisplay">RGB</span> 
 	<br>
-	Color Game
+	Guessing Game
 </h1>
 
 <div id="stripe">
 	<button id="reset">New Colors</button>
 	<span id="message"></span>
 	<button class="mode">Easy</button>
-	<!-- class XXX will make it the property of the class -->
-	<!-- an item can have two classed just need to be saperated by space-->
+	<button class="mode">Medium</button>
 	<button class="mode selected">Hard</button>
 </div>
 
 <div id="container">
+	<div class="square"></div>
+	<div class="square"></div>
+	<div class="square"></div>
 	<div class="square"></div>
 	<div class="square"></div>
 	<div class="square"></div>

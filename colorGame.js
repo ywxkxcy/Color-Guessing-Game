@@ -1,16 +1,12 @@
-var numOfSquares = 6;
-
+var numOfSquares = 9;
 var colors = [];
 var pickedColor;
 var squares = document.querySelectorAll(".square");
-
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
-// var easyBtn = document.querySelector("#easyBtn");
-// var hardBtn = document.querySelector("#hardBtn");
 
 init();
 
@@ -26,11 +22,14 @@ function setUpModeButtons(){
 		modeButtons[i].addEventListener("click", function(){
 			modeButtons[0].classList.remove("selected");
 			modeButtons[1].classList.remove("selected");
+			modeButtons[2].classList.remove("selected");
 			this.classList.add("selected");
 			if(this.textContent == "Easy") {
 				numOfSquares = 3;
-			} else {
+			} else if (this.textContent == "Medium"){
 				numOfSquares = 6;
+			} else {
+				numOfSquares = 9;
 			}
 
 			reset();
@@ -42,8 +41,6 @@ function setUpSquares(){
 	for(var i = 0; i < squares.length; i++) {
 		// add click listener to squares
 		squares[i].addEventListener("click", function(){
-			// alert("click a square"): alert就像是别的编程里是print...看看出来的是啥
-
 			// grab color of clicked square
 			var clickedColor = this.style.backgroundColor;
 			// compare color to pickedColor
@@ -60,14 +57,13 @@ function setUpSquares(){
 	}
 }
 
-
 function reset(){
 	// generate all new colors
 	colors = generateRandomColors(numOfSquares);
 	// pick a new random color from array
 	pickedColor = pickColor();
 	// change colorDisplay to matfch picked color
-	colorDisplay.textContent = pickedColor; // 写这个的时候把他写成pickColor了...出现了奇怪的错误
+	colorDisplay.textContent = pickedColor;
 	// reset the text
 	resetButton.textContent = "New Colors"
 	messageDisplay.textContent = "";
@@ -81,46 +77,12 @@ function reset(){
 			squares[i].style.display = "none"; 
 		}	
 	}
-	h1.style.backgroundColor = "steelblue"; // 第一次写的时候忘记加“”了
+	h1.style.backgroundColor = "steelblue";
 }
-
-// alert用作刚开始连接时候的效果检查
-// 一点点效果就要写一堆的代码...写完之后记得refactor你的代码
-// easyBtn.addEventListener("click", function(){
-// 	hardBtn.classList.remove("selected");
-// 	easyBtn.classList.add("selected");
-// 	numOfSquares = 3
-// 	colors = generateRandomColors(numOfSquares);
-// 	pickedColor = pickColor();
-// 	colorDisplay.textContent = pickedColor;
-// 	for (var i = 0; i < squares.length; i++) {
-// 		if (colors[i]) {
-// 			squares[i].style.background = colors[i];
-// 		} else {
-// 			squares[i].style.display = "none";
-// 		}
-// 	}
-// })
-
-// hardBtn.addEventListener("click", function(){
-// 	hardBtn.classList.add("selected");
-// 	easyBtn.classList.remove("selected");
-// 	numOfSquares = 6
-// 	colors = generateRandomColors(numOfSquares);
-// 	pickedColor = pickColor();
-// 	colorDisplay.textContent = pickedColor;
-// 	for (var i = 0; i < squares.length; i++) {
-// 		squares[i].style.background = colors[i];
-// 		squares[i].style.display = "block";
-// 	}
-// })
 
 resetButton.addEventListener("click", function(){
 	reset();
 })
-
-
-
 
 function changeColors(color) {
 	//loop through all squares
@@ -141,8 +103,7 @@ function generateRandomColors(num) {
 	var arr = []
 	// add num random colors to array
 	for (var i = 0; i < num; i++) {
-		//get random color and push into arr
-		arr.push(randomColor()); // 这个push的操作就和python很像了
+		arr.push(randomColor());
 	}
 	// return that array
 	return arr;
@@ -153,7 +114,5 @@ function randomColor() {
 	var r = Math.floor(Math.random() * 256);
 	var g = Math.floor(Math.random() * 256);
 	var b = Math.floor(Math.random() * 256);
-	// 这种return看上去很厉害的样子...
-	// 注意本来的rgb是有空格的
 	return "rgb(" + r + ", " + g + ", " +  + b + ")";
 }
