@@ -1,0 +1,90 @@
+body {
+	background-color: #232323;
+	margin: 0;
+	font-family: "Montserrat", "Avenir";
+}
+
+.square {
+	width: 30%;
+	background: purple;
+	padding-bottom: 30%;
+	/*靠左排*/
+	float: left;
+	margin: 1.66%;
+	/*if it is 50% we wil get circle*/
+	border-radius: 15%;
+	transition: background 0.5s;
+	/*for multiple brower support transition not build in all browers*/
+	-webkit-transition: background 0.6s;
+	-moz-transition: background 0.6s;
+}
+
+#container {
+	/*0 margin on top and bottom and auto on both sides*/
+	margin: 20px auto; 
+	/*limit the maximum width*/
+	max-width: 600px;
+}
+
+h1 {
+	text-align: center;
+	line-height: 1.1;
+	/*h1默认的weight是加粗的*/
+	font-weight: normal;
+	color: white;
+	background: steelblue;
+	margin: 0;
+	text-transform: uppercase;
+	padding: 20px 0; /*或者单独写padding top和padding bottom */
+}
+
+/*这是一个specificity的问题*/
+/*span {
+	color: white;
+}*/
+
+#colorDisplay {
+	font-size: 200%;
+}
+
+#message {
+	display: inline-block;
+	/*the message will take 20% of the screen*/
+	width: 20%;
+}
+
+#stripe {
+	background-color: white;
+	height: 30px;
+	text-align: center;
+	color: black;
+}
+
+.selected {
+	color: white;
+	background-color: steelblue;
+}
+
+button {
+	/*让他没有就写none*/
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	/*让上下占满不留缝隙*/
+	height: 100%;
+	/*change the color of the front*/
+	color: steelblue; 
+	/*change the space between letter*/
+	letter-spacing: 1px;
+	/*we do not need to explictly set it*/
+	font-size: inherit;
+	/*when the color changes it take 2 second*/
+	transition: all 0.3s;
+	/*get rid of the blue outline*/
+	outline: none;
+}
+
+button:hover {
+	color: white;
+	background-color: steelblue;
+}
